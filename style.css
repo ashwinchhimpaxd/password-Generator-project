@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image: url('https://images.wallpaperscraft.com/image/single/sea_sunset_art_131736_2048x1152.jpg');
+    background-image: url('https://images.wallpaperscraft.com/image/single/pond_trees_landscape_1247250_3840x2160.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -14,45 +14,82 @@ body {
     width: 100vw;
 }
 
+.welcomemessage {
+    font-size: 2rem;
+    position: absolute;
+    font-weight: 900;
+    top: 5%;
+    color: rgb(167, 250, 252);
+    border: 2px solid;
+    border-radius: 10px;
+    padding: 4px 10px;
+    background-color: rgba(255, 188, 88, 0.53);
+    /* min-width: 200px;
+    max-width: 500px; */
+    overflow: hidden;
+    text-align: center;
+}
+
 .form-box {
     height: 100%;
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    text-align: center;
 }
 
 .box {
-    /* background-image: url('https://images.wallpaperscraft.com/image/single/minimalism_sky_clouds_95458_1024x768.jpg'); */
-    background-image: linear-gradient(rgba(229, 130, 130, 0.849), rgba(255, 255, 255, 0.244)), url('https://images.wallpaperscraft.com/image/single/minimalism_sky_clouds_95458_1024x768.jpg');
+    /* background-image: linear-gradient(rgba(229, 130, 130, 0.849), rgba(255, 255, 255, 0.244)), url('https://images.wallpaperscraft.com/image/single/minimalism_sky_clouds_95458_1024x768.jpg'); */
     /* background-position: center; */
     background-size: cover;
-    /* background-repeat: no-repeat; */
-    width: 35%;
-    height: 50%;
+    border: 3px solid rgb(253, 176, 189);
+    width: 25%;
+    height: 35%;
     padding: 2%;
     border-radius: 25px;
-    position: relative;
+    position: absolute;
     top: 20%;
+    backdrop-filter: blur(2px);
 }
 
 .input-fields {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: relative;
 }
 
 .input {
+    position: relative;
     padding: 4px 2px 2px 10px;
     background-color: rgba(248, 154, 222, 0.369);
     border-radius: 10px;
     border: none;
-    font-size: 2.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
     width: 100%;
     outline: none;
 }
 
 input::placeholder {
-    color: white;
+    color: rgb(0, 0, 0);
+}
+
+input:focus {
+    border: 3px solid rgba(248, 211, 217, 0.716);
+}
+
+
+.drop-btn {
+    color: rgb(148, 225, 253);
+    padding: 5px 5px;
+    font-size: 1.3em;
+    font-weight: 800;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgba(182, 95, 249, 0.549);
+    width: 100%;
 }
 
 #drop-down-menu {
@@ -62,59 +99,58 @@ input::placeholder {
     max-width: 100%;
 }
 
-.drop-btn {
-    color: rgb(148, 225, 253);
-    padding: 5px 5px;
-    font-size: 1.5rem;
-    font-weight: 800;
-    border: 2px solid transparent;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: rgba(182, 95, 249, 0.549);
-    width: 100%;
-}
-
 #drop-down-menu:hover .drop-btn {
     border-radius: 10px 10px 0px 0px;
 }
 
+
 .drop-item {
-    /* display: none; */
+    display: none;
     font-size: 1.5rem;
     position: absolute;
     z-index: 1;
-    min-width: 20rem;
+    min-width: 10rem;
+    max-width: 18rem !important;
     background-color: rgba(234, 206, 255, 0.379);
     border-radius: 0px 5px 10px 10px;
     cursor: pointer;
-}
 
-.drop-item ul li {
-    display: block;
-    font-size: 1.6rem;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.drop-item ul li:hover {
-    background-color: rgba(255, 138, 228, 0.366);
-}
-
-#first-li {
-    border-radius: 0 5px 0 0;
-}
-
-#last-li {
-    border-radius: 0 0 10px 10px;
 }
 
 #drop-down-menu:hover .drop-item {
     display: block;
+    animation: 0.3s alternate forwards dropdown;
+}
+
+@keyframes dropdown {
+    from {
+        height: 0%;
+        opacity: 0;
+    }
+
+    to {
+        height: 90%;
+        opacity: 1;
+    }
+}
+
+.drop-item ul li {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: whitesmoke;
+    padding: 4px 10px;
+}
+
+.drop-item ul li:hover {
+    background-color: rgba(255, 138, 228, 0.366);
+    color: rgb(0, 0, 0);
+    border-radius: 0px 0px 10px 10px;
 }
 
 .submit {
     position: relative;
-    top: 5em;
+    top: 1.5em;
     border: none;
     border-radius: 10px;
     font-size: 1.6em;
@@ -122,14 +158,35 @@ input::placeholder {
     cursor: pointer;
     width: 100%;
     background-color: rgba(234, 206, 255, 0.379);
-    color: rgb(142, 0, 231);
-    /* box-shadow: 2px 3px 20px 8px rgb(49 49 49 / 28%), inset 2px -1px 5px 1px rgb(86, 84, 84); */
-    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    color: rgb(255, 255, 255);
+    box-shadow: rgb(244, 198, 253) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
     height: 3rem;
-    transition: 0.2s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 
 .submit:hover {
     transform: scale(0.9);
     background-color: rgba(231, 140, 252, 0.589);
+    color: rgb(84, 27, 87);
+}
+
+
+.fa-solid {
+    position: absolute;
+    font-size: 1.2rem;
+}
+
+.passwordicon:hover {
+    cursor: pointer;
+}
+
+.usernameicon {
+    top: 2%;
+    font-size: 1.6rem !important;
+    right: 4%;
+}
+
+.passwordicon {
+    top: 29%;
+    right: 4%;
 }
