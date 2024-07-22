@@ -79,7 +79,7 @@ input::placeholder {
 }
 
 .drop-item {
-    display: none;
+    /* display: none; */
     font-size: 1.5rem;
     position: absolute;
     z-index: 1;
@@ -126,4 +126,10 @@ input::placeholder {
     /* box-shadow: 2px 3px 20px 8px rgb(49 49 49 / 28%), inset 2px -1px 5px 1px rgb(86, 84, 84); */
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
     height: 3rem;
+    transition: 0.2s ease-in-out;
+}
+
+.submit:hover {
+    transform: scale(0.9);
+    background-color: rgba(231, 140, 252, 0.589);
 }
