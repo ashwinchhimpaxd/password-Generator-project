@@ -1,47 +1,50 @@
 const SubmitBtn = document.querySelector('.submit');
-const passwordlist = document.querySelectorAll('.drop-item ul>li')
+const passwordlist = document.querySelector('.drop-item ul > li')
 const passwordfield = document.querySelector('#passwordField');
 const inputfielvalue = document.querySelector('#userNameField')
-const passwordtoggleBtn = document.querySelector('.passwordicon');
-const form = document.querySelector('form')
-passwordlist.forEach((list) => {
-    list.addEventListener('click', (li) => generatepassword(li))
-})
+const passWordEyetoggle = document.querySelector('.passwordicon');
+const form = document.querySelector('#form')
 
-passwordtoggleBtn.addEventListener('click', () => {
-    let classes = passwordtoggleBtn.classList.contains("fa-eye-slash");
+passwordlist.addEventListener('click', () => Createstrongpass())
+SubmitBtn.addEventListener('click', (e) => welcomeMessage(e))
+passWordEyetoggle.addEventListener('click', () => {
+    let classes = passWordEyetoggle.classList.contains("fa-eye-slash");
     if (classes) {
-        passwordtoggleBtn.classList.add('fa-eye')
-        passwordtoggleBtn.classList.remove('fa-eye-slash')
+        passWordEyetoggle.classList.add('fa-eye')
+        passWordEyetoggle.classList.remove('fa-eye-slash')
         passwordfield.type = "text"
     } else {
-        passwordtoggleBtn.classList.remove('fa-eye')
-        passwordtoggleBtn.classList.add('fa-eye-slash')
+        passWordEyetoggle.classList.remove('fa-eye')
+        passWordEyetoggle.classList.add('fa-eye-slash')
         passwordfield.type = "password"
     }
 })
 
-function generatepassword(li) {
-    const listvalue = li.target.innerHTML;
-    passwordlist.forEach((listitem) => {
-        if (listitem.innerHTML == listvalue) {
 
-            let password = Createstrongpass()
-            passwordfield.value = password;
-            return;
-        }
-    })
-}
-SubmitBtn.addEventListener('click', (e) => welcomeMessage(e))
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    welcomeMessage(e)
+})
 
 const welcomeMessage = (e) => {
     e.preventDefault();
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&*()_+\-=<>?])(.*)$/;
     const welcomeMessage = document.querySelector('.welcomemessage');
     let inputtext = inputfielvalue.value.trim();
-    welcomeMessage.innerHTML = `Hey ${inputtext}`;
+    let passwordvalue = passwordfield.value.trim();
+    if (inputtext == "" || passwordvalue == "") {
+        return;
+    } else if (regex.test(passwordvalue)) {
 
+        welcomeMessage.innerHTML = `Hey ${inputtext}`;
+        inputfielvalue.value = "";
+        passwordfield.value = "";
+    } else {
+        alert('not recommended')
+    }
 }
 function Createstrongpass() {
+    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&*()_+\-=<>?])(.*)$/;
     let valueforpasscode = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?";
     let max = valueforpasscode.length;
     let newcode = ""
@@ -49,7 +52,6 @@ function Createstrongpass() {
         let randomvalue = Math.floor(Math.random() * max);
         newcode += valueforpasscode[randomvalue]
     }
-    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&*()_+\-=<>?])(.*)$/;
-    if (regex.test(newcode)) return newcode;
-    return Createstrongpass();
+    if (regex.test(newcode)) passwordfield.value = newcode;
+    else return Createstrongpass();
 }
