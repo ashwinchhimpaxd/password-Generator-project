@@ -27,6 +27,7 @@ body {
     position: absolute;
     border-radius: 20px;
     overflow: hidden;
+    box-shadow:6px 5px 0px 5px black;
 }
 
 .image-section {
