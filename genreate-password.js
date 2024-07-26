@@ -40,7 +40,7 @@ const welcomeMessage = (e) => {
         inputfielvalue.value = "";
         passwordfield.value = "";
     } else {
-        alert('Atleast one Upper and lower character and one deigit and special character must')
+        alert('not recommended')
     }
 }
 function Createstrongpass() {
